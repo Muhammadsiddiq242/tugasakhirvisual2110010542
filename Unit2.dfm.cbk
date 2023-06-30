@@ -226,14 +226,16 @@ object Form2: TForm2
     Height = 33
     Caption = 'HAPUS'
     TabOrder = 12
+    OnClick = btn4Click
   end
   object btn5: TButton
     Left = 606
-    Top = 216
+    Top = 215
     Width = 81
     Height = 33
     Caption = 'BATAL'
     TabOrder = 13
+    OnClick = btn5Click
   end
   object ds1: TDataSource
     DataSet = zqry1

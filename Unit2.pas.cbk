@@ -41,6 +41,8 @@ type
     procedure btn2Click(Sender: TObject);
     procedure dbgrd1CellClick(Column: TColumn);
     procedure btn3Click(Sender: TObject);
+    procedure btn4Click(Sender: TObject);
+    procedure btn5Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -135,6 +137,8 @@ begin
     edt5.Text := zqry1.Fields[7].AsString;
     edt6.Text := zqry1.Fields[8].AsString;
     btn3.Enabled := True;
+    btn4.Enabled := True;
+    btn5.Enabled := True;
 end;
 end;
 
@@ -157,6 +161,31 @@ zqry1.SQL.Clear;
 zqry1.SQL.Add('SELECT * FROM siswa');
 zqry1.Open;
 
+end;
+
+procedure TForm2.btn4Click(Sender: TObject);
+begin
+  zqry1.SQL.Clear;
+  zqry1.SQL.Add('DELETE FROM siswa WHERE id = :Value');
+  zqry1.ParamByName('Value').AsInteger := 1;
+  zqry1.ExecSQL;
+
+  zqry1.Close;
+  zqry1.SQL.Clear;
+  zqry1.SQL.Add('SELECT * FROM siswa');
+  zqry1.Open;
+
+end;
+
+procedure TForm2.btn5Click(Sender: TObject);
+begin
+edt1.Clear;
+edt2.Clear;
+edt3.Clear;
+edt4.Clear;
+edt5.Clear;
+edt6.Clear;
+cbb1.Clear;
 end;
 
 end.
