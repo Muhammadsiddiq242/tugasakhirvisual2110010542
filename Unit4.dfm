@@ -1,9 +1,9 @@
-object Form2: TForm2
-  Left = 197
-  Top = 144
+object Form4: TForm4
+  Left = 180
+  Top = 195
   Width = 924
   Height = 480
-  Caption = 'Form2'
+  Caption = 'Form4'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -17,19 +17,6 @@ object Form2: TForm2
   object lbl1: TLabel
     Left = 64
     Top = 8
-    Width = 44
-    Height = 23
-    Caption = 'NISN'
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -19
-    Font.Name = 'Tahoma'
-    Font.Style = []
-    ParentFont = False
-  end
-  object lbl2: TLabel
-    Left = 64
-    Top = 32
     Width = 31
     Height = 23
     Caption = 'NIK'
@@ -40,9 +27,9 @@ object Form2: TForm2
     Font.Style = []
     ParentFont = False
   end
-  object lbl3: TLabel
+  object lbl2: TLabel
     Left = 64
-    Top = 56
+    Top = 32
     Width = 50
     Height = 23
     Caption = 'NAMA'
@@ -53,12 +40,25 @@ object Form2: TForm2
     Font.Style = []
     ParentFont = False
   end
+  object lbl3: TLabel
+    Left = 64
+    Top = 56
+    Width = 109
+    Height = 23
+    Caption = 'PENDIDIKAN'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+  end
   object lbl4: TLabel
     Left = 64
     Top = 80
-    Width = 127
+    Width = 98
     Height = 23
-    Caption = 'TEMPAT LAHIR'
+    Caption = 'PEKERJAAN'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
@@ -68,10 +68,10 @@ object Form2: TForm2
   end
   object lbl5: TLabel
     Left = 64
-    Top = 104
-    Width = 139
+    Top = 103
+    Width = 41
     Height = 23
-    Caption = 'TANGGAL LAHIR'
+    Caption = 'TELP'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
@@ -95,9 +95,9 @@ object Form2: TForm2
   object lbl7: TLabel
     Left = 64
     Top = 160
-    Width = 136
+    Width = 68
     Height = 23
-    Caption = 'TINGKAT KELAS'
+    Caption = 'ALAMAT'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
@@ -108,9 +108,9 @@ object Form2: TForm2
   object lbl8: TLabel
     Left = 64
     Top = 184
-    Width = 79
+    Width = 67
     Height = 23
-    Caption = 'JURUSAN'
+    Caption = 'STATUS'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
@@ -147,27 +147,18 @@ object Form2: TForm2
     TabOrder = 3
   end
   object edt5: TEdit
-    Left = 248
-    Top = 160
+    Left = 247
+    Top = 105
     Width = 193
     Height = 21
     TabOrder = 4
   end
   object edt6: TEdit
-    Left = 248
-    Top = 184
+    Left = 247
+    Top = 160
     Width = 193
     Height = 21
     TabOrder = 5
-  end
-  object dtp1: TDateTimePicker
-    Left = 248
-    Top = 104
-    Width = 193
-    Height = 25
-    Date = 45095.524503194440000000
-    Time = 45095.524503194440000000
-    TabOrder = 6
   end
   object btn1: TButton
     Left = 248
@@ -175,22 +166,19 @@ object Form2: TForm2
     Width = 81
     Height = 33
     Caption = 'BARU'
-    TabOrder = 7
-    OnClick = btn1Click
+    TabOrder = 6
   end
   object dbgrd1: TDBGrid
     Left = 32
     Top = 263
     Width = 857
     Height = 137
-    DataSource = ds1
-    TabOrder = 8
+    TabOrder = 7
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
     TitleFont.Height = -11
     TitleFont.Name = 'Tahoma'
     TitleFont.Style = []
-    OnCellClick = dbgrd1CellClick
   end
   object cbb1: TComboBox
     Left = 248
@@ -198,7 +186,7 @@ object Form2: TForm2
     Width = 193
     Height = 21
     ItemHeight = 13
-    TabOrder = 9
+    TabOrder = 8
     OnChange = cbb1Change
   end
   object btn2: TButton
@@ -207,8 +195,7 @@ object Form2: TForm2
     Width = 81
     Height = 33
     Caption = 'SIMPAN'
-    TabOrder = 10
-    OnClick = btn2Click
+    TabOrder = 9
   end
   object btn3: TButton
     Left = 425
@@ -216,8 +203,7 @@ object Form2: TForm2
     Width = 81
     Height = 33
     Caption = 'EDIT'
-    TabOrder = 11
-    OnClick = btn3Click
+    TabOrder = 10
   end
   object btn4: TButton
     Left = 516
@@ -225,8 +211,7 @@ object Form2: TForm2
     Width = 81
     Height = 33
     Caption = 'HAPUS'
-    TabOrder = 12
-    OnClick = btn4Click
+    TabOrder = 11
   end
   object btn5: TButton
     Left = 606
@@ -234,34 +219,13 @@ object Form2: TForm2
     Width = 81
     Height = 33
     Caption = 'BATAL'
+    TabOrder = 12
+  end
+  object edt7: TEdit
+    Left = 248
+    Top = 185
+    Width = 193
+    Height = 21
     TabOrder = 13
-    OnClick = btn5Click
-  end
-  object ds1: TDataSource
-    DataSet = zqry1
-    Top = 152
-  end
-  object con1: TZConnection
-    ControlsCodePage = cGET_ACP
-    UTF8StringsAsWideField = False
-    AutoEncodeStrings = False
-    Connected = True
-    HostName = 'localhost'
-    Port = 3306
-    Database = 'tugasakhirvisual'
-    User = 'root'
-    Protocol = 'mysql'
-    LibraryLocation = 'F:\VISUAL 2\TUGAS VISUAL 2 mysql\libmysql.dll'
-    Left = 7
-    Top = 72
-  end
-  object zqry1: TZQuery
-    Connection = con1
-    Active = True
-    SQL.Strings = (
-      'select*from siswa')
-    Params = <>
-    Left = 4
-    Top = 114
   end
 end

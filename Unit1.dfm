@@ -1,6 +1,6 @@
 object Form1: TForm1
-  Left = 346
-  Top = 163
+  Left = 577
+  Top = 161
   Width = 924
   Height = 579
   Caption = 'Form1'
@@ -24,9 +24,11 @@ object Form1: TForm1
       end
       object abelWalikelas1: TMenuItem
         Caption = 'Tabel Walikelas'
+        OnClick = abelWalikelas1Click
       end
       object abelOrangtua1: TMenuItem
         Caption = 'Tabel Orangtua'
+        OnClick = abelOrangtua1Click
       end
     end
   end
