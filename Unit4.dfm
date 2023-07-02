@@ -1,6 +1,6 @@
 object Form4: TForm4
-  Left = 180
-  Top = 195
+  Left = 588
+  Top = 141
   Width = 924
   Height = 480
   Caption = 'Form4'
@@ -173,6 +173,7 @@ object Form4: TForm4
     Top = 263
     Width = 857
     Height = 137
+    DataSource = ds1
     TabOrder = 7
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
@@ -227,5 +228,33 @@ object Form4: TForm4
     Width = 193
     Height = 21
     TabOrder = 13
+  end
+  object con1: TZConnection
+    ControlsCodePage = cGET_ACP
+    UTF8StringsAsWideField = False
+    AutoEncodeStrings = False
+    Connected = True
+    HostName = 'localhost'
+    Port = 3306
+    Database = 'tugasakhirvisual'
+    User = 'root'
+    Protocol = 'mysql'
+    LibraryLocation = 'F:\VISUAL 2\TUGAS VISUAL 2 mysql\libmysql.dll'
+    Left = 8
+    Top = 89
+  end
+  object zqry1: TZQuery
+    Connection = con1
+    Active = True
+    SQL.Strings = (
+      'select*from ortu')
+    Params = <>
+    Left = 10
+    Top = 136
+  end
+  object ds1: TDataSource
+    DataSet = zqry1
+    Left = 10
+    Top = 192
   end
 end
