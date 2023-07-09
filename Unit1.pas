@@ -13,9 +13,13 @@ type
     abelMahasiswa2: TMenuItem;
     abelWalikelas1: TMenuItem;
     abelOrangtua1: TMenuItem;
-    procedure abelMahasiswa2Click(Sender: TObject);
+    abelCatatan1: TMenuItem;
+    abelPoin1: TMenuItem;
+    procedure abelsiswa2Click(Sender: TObject);
     procedure abelWalikelas1Click(Sender: TObject);
     procedure abelOrangtua1Click(Sender: TObject);
+    procedure abelCatatan1Click(Sender: TObject);
+    procedure abelPoin1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -27,11 +31,11 @@ var
 
 implementation
 
-uses Unit2, Unit3, Unit4;
+uses Unit2, Unit3, Unit4, Unit6, Unit7;
 
 {$R *.dfm}
 
-procedure TForm1.abelMahasiswa2Click(Sender: TObject);
+procedure TForm1.abelsiswa2Click(Sender: TObject);
 begin
   Form2.Show;
 end;
@@ -44,6 +48,16 @@ end;
 procedure TForm1.abelOrangtua1Click(Sender: TObject);
 begin
  Form4.Show;
+end;
+
+procedure TForm1.abelCatatan1Click(Sender: TObject);
+begin
+Form6.Show;
+end;
+
+procedure TForm1.abelPoin1Click(Sender: TObject);
+begin
+Form7.Show;
 end;
 
 end.
