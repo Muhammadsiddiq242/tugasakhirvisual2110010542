@@ -6,7 +6,7 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, DB, ADODB, StdCtrls, ExtCtrls, ComCtrls, Menus, Grids, DBGrids,
   ZAbstractRODataset, ZAbstractDataset, ZDataset, ZAbstractConnection,
-  ZConnection, frxClass, frxDBSet, ;
+  ZConnection ;
 
 type
   TForm2 = class(TForm)
@@ -35,8 +35,6 @@ type
     btn3: TButton;
     btn4: TButton;
     btn5: TButton;
-    frxrprt1: TfrxReport;
-    frxdbdtst1: TfrxDBDataset;
     btn6: TButton;
     procedure FormCreate(Sender: TObject);
     procedure cbb1Change(Sender: TObject);
@@ -147,39 +145,101 @@ end;
 end;
 
 procedure TForm2.btn3Click(Sender: TObject);
+var
+  Confirmation: Integer;
 begin
+  Confirmation := MessageDlg('Apakah Anda yakin ingin mengedit data ini?', mtConfirmation, [mbYes, mbNo], 0);
+  
+  if Confirmation = mrYes then
+  begin
+    // Mengedit data
+    zqry1.SQL.Clear;
+    zqry1.SQL.Add('UPDATE siswa SET nik = :Value2, nama = :Value3, tempat_lahir = :Value4, tanggal_lahir = :Value5, jenis_kelamin = :Value6, tingkat_kelas = :Value7, jurusan = :Value8 WHERE nisn = :Value1');
+    zqry1.ParamByName('Value1').AsString := edt1.Text;
+    zqry1.ParamByName('Value2').AsString := edt2.Text;
+    zqry1.ParamByName('Value3').AsString := edt3.Text;
+    zqry1.ParamByName('Value4').AsString := edt4.Text;
+    zqry1.ParamByName('Value5').AsDate := dtp1.Date;
+    zqry1.ParamByName('Value6').AsString := cbb1.Text;
+    zqry1.ParamByName('Value7').AsString := edt5.Text;
+    zqry1.ParamByName('Value8').AsString := edt6.Text;
+    zqry1.ExecSQL;
+  
+    ShowMessage('Data berhasil diedit!');
+  end
+  else
+  begin
+    ShowMessage('Pengeditan data dibatalkan!');
+  end;
+
+  // Menampilkan data terbaru setelah pengeditan atau tidak melakukan edit
   zqry1.SQL.Clear;
-zqry1.SQL.Add('UPDATE siswa SET nisn = :Value1, nik = :Value2, nama = :Value3, tempat_lahir = :Value4, tanggal_lahir = :Value5, jenis_kelamin = :Value6, tingkat_kelas = :Value7, jurusan = :Value8 WHERE id = 1');
-zqry1.ParamByName('Value1').AsString := edt1.Text;
-zqry1.ParamByName('Value2').AsString := edt2.Text;
-zqry1.ParamByName('Value3').AsString := edt3.Text;
-zqry1.ParamByName('Value4').AsString := edt4.Text;
-zqry1.ParamByName('Value5').AsDateTime := dtp1.Date;
-zqry1.ParamByName('Value6').AsString := cbb1.Text;
-zqry1.ParamByName('Value7').AsString := edt5.Text;
-zqry1.ParamByName('Value8').AsString := edt6.Text;
-zqry1.ExecSQL;
-
-zqry1.Close;
-zqry1.SQL.Clear;
-zqry1.SQL.Add('SELECT * FROM siswa');
-zqry1.Open;
-
+  zqry1.SQL.Add('SELECT * FROM siswa WHERE nisn = :Value1');
+  zqry1.ParamByName('Value1').AsString := edt1.Text;
+  zqry1.Open;
+  
+  // Menampilkan data terbaru di komponen input
+  if not zqry1.IsEmpty then
+  begin
+    edt2.Text := zqry1.FieldByName('nik').AsString;
+    edt3.Text := zqry1.FieldByName('nama').AsString;
+    edt4.Text := zqry1.FieldByName('tempat_lahir').AsString;
+    dtp1.Date := zqry1.FieldByName('tanggal_lahir').AsDateTime;
+    cbb1.Text := zqry1.FieldByName('jenis_kelamin').AsString;
+    edt5.Text := zqry1.FieldByName('tingkat_kelas').AsString;
+    edt6.Text := zqry1.FieldByName('jurusan').AsString;
+  end;
 end;
+
 
 procedure TForm2.btn4Click(Sender: TObject);
+var
+  Confirmation: Integer;
 begin
-  zqry1.SQL.Clear;
-  zqry1.SQL.Add('DELETE FROM siswa WHERE id = :Value');
-  zqry1.ParamByName('Value').AsInteger := 1;
-  zqry1.ExecSQL;
+  Confirmation := MessageDlg('Apakah Anda yakin ingin menghapus data ini?', mtConfirmation, [mbYes, mbNo], 0);
 
-  zqry1.Close;
-  zqry1.SQL.Clear;
-  zqry1.SQL.Add('SELECT * FROM siswa');
-  zqry1.Open;
+  if Confirmation = mrYes then
+  begin
+    zqry1.SQL.Clear;
+    zqry1.SQL.Add('DELETE FROM siswa WHERE nisn = :Value1');
+    zqry1.ParamByName('Value1').AsString := edt1.Text;
+    zqry1.ExecSQL;
+  
+    ShowMessage('Data berhasil dihapus!');
 
+    // Menampilkan data terbaru setelah penghapusan
+    zqry1.SQL.Clear;
+    zqry1.SQL.Add('SELECT * FROM siswa');
+    zqry1.Open;
+    
+    edt1.Clear;
+    edt2.Clear;
+    edt3.Clear;
+    edt4.Clear;
+    edt5.Clear;
+    edt6.Clear;
+    cbb1.Clear;
+    
+    // Menampilkan data terbaru di komponen input
+    if not zqry1.IsEmpty then
+    begin
+      edt1.Text := zqry1.FieldByName('nisn').AsString;
+      edt2.Text := zqry1.FieldByName('nik').AsString;
+      edt3.Text := zqry1.FieldByName('nama').AsString;
+      edt4.Text := zqry1.FieldByName('tempat_lahir').AsString;
+      dtp1.Date := zqry1.FieldByName('tanggal_lahir').AsDateTime;
+      cbb1.Text := zqry1.FieldByName('jenis_kelamin').AsString;
+      edt5.Text := zqry1.FieldByName('tingkat_kelas').AsString;
+      edt6.Text := zqry1.FieldByName('jurusan').AsString;
+    end;
+  end
+  else
+  begin
+    ShowMessage('Penghapusan data dibatalkan!');
+  end;
 end;
+
+
 
 procedure TForm2.btn5Click(Sender: TObject);
 begin
@@ -197,7 +257,7 @@ begin
 form2.zqry1.Active:=false;
 form2.zqry1.SQL.Add('SELECT*FROM siswa');
 form2.zqry1.Active:=true;
-form2.frxrprt1.ShowReport();
+
 end;
 
 end.

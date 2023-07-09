@@ -38,6 +38,7 @@ type
     procedure btn2Click(Sender: TObject);
     procedure dbgrd1CellClick(Column: TColumn);
     procedure btn3Click(Sender: TObject);
+    procedure btn4Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -133,23 +134,68 @@ end;
 end;
 
 procedure TForm3.btn3Click(Sender: TObject);
+var
+  Confirmation: Integer;
 begin
-zqry1.SQL.Clear;
-zqry1.SQL.Add('UPDATE walikelas SET nik = :Value1, nama= :Value2, jenis_kelamin = :Value3, pendidikan = :Value4, matpel = :Value5, walkel = :Value6, kepsek = :Value7, WHERE id = 1');
-zqry1.ParamByName('Value1').AsString := edt1.Text;
-zqry1.ParamByName('Value2').AsString := edt2.Text;
-zqry1.ParamByName('Value3').AsString := cbb1.Text;
-zqry1.ParamByName('Value4').AsString := edt3.Text;
-zqry1.ParamByName('Value5').AsString := edt4.Text;
-zqry1.ParamByName('Value6').AsString := edt5.Text;
-zqry1.ParamByName('Value7').AsString := edt6.Text;
-zqry1.ExecSQL;
+  Confirmation := MessageDlg('Apakah Anda yakin ingin mengedit data ini?', mtConfirmation, [mbYes, mbNo], 0);
+  
+  if Confirmation = mrYes then
+  begin
+    // Menghapus data lama
+    zqry1.SQL.Clear;
+    zqry1.SQL.Add('DELETE FROM walikelas WHERE id = 1');
+    zqry1.ExecSQL;
+  
+    // Menambahkan data yang diedit
+    zqry1.SQL.Clear;
+    zqry1.SQL.Add('INSERT INTO walikelas (id, nik, nama, jenis_kelamin, pendidikan, matpel, walkel, kepsek) VALUES (:Value1, :Value2, :Value3, :Value4, :Value5, :Value6, :Value7, :Value8)');
+    zqry1.ParamByName('Value1').AsInteger := 1; // ID tetap
+    zqry1.ParamByName('Value2').AsString := edt1.Text;
+    zqry1.ParamByName('Value3').AsString := edt2.Text;
+    zqry1.ParamByName('Value4').AsString := cbb1.Text;
+    zqry1.ParamByName('Value5').AsString := edt3.Text;
+    zqry1.ParamByName('Value6').AsString := edt4.Text;
+    zqry1.ParamByName('Value7').AsString := edt5.Text;
+    zqry1.ParamByName('Value8').AsString := edt6.Text;
+    zqry1.ExecSQL;
+  
+    ShowMessage('Data berhasil diedit!');
+  
+    zqry1.Close;
+    zqry1.SQL.Clear;
+    zqry1.SQL.Add('SELECT * FROM walikelas');
+    zqry1.Open;
+  end
+  else
+  begin
+    ShowMessage('Pengeditan data dibatalkan!');
+  end;
+end;
 
-zqry1.Close;
-zqry1.SQL.Clear;
-zqry1.SQL.Add('SELECT * FROM walikelas');
-zqry1.Open;
-
+procedure TForm3.btn4Click(Sender: TObject);
+var
+  Confirmation: Integer;
+begin
+  Confirmation := MessageDlg('Apakah Anda yakin ingin menghapus data ini?', mtConfirmation, [mbYes, mbNo], 0);
+  
+  if Confirmation = mrYes then
+  begin
+    zqry1.SQL.Clear;
+    zqry1.SQL.Add('DELETE FROM walikelas WHERE id = :Value1');
+    zqry1.ParamByName('Value1').AsInteger := 1; // ID tetap
+    zqry1.ExecSQL;
+  
+    ShowMessage('Data berhasil dihapus!');
+  
+    zqry1.Close;
+    zqry1.SQL.Clear;
+    zqry1.SQL.Add('SELECT * FROM walikelas');
+    zqry1.Open;
+  end
+  else
+  begin
+    ShowMessage('Penghapusan data dibatalkan!');
+  end;
 end;
 
 end.

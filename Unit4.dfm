@@ -1,6 +1,6 @@
 object Form4: TForm4
-  Left = 611
-  Top = 191
+  Left = 380
+  Top = 161
   Width = 924
   Height = 480
   Caption = 'Form4'
@@ -167,6 +167,7 @@ object Form4: TForm4
     Height = 33
     Caption = 'BARU'
     TabOrder = 6
+    OnClick = btn1Click
   end
   object dbgrd1: TDBGrid
     Left = 32
@@ -180,10 +181,11 @@ object Form4: TForm4
     TitleFont.Height = -11
     TitleFont.Name = 'Tahoma'
     TitleFont.Style = []
+    OnCellClick = dbgrd1CellClick
   end
   object cbb1: TComboBox
-    Left = 248
-    Top = 136
+    Left = 247
+    Top = 135
     Width = 193
     Height = 21
     ItemHeight = 13
@@ -197,14 +199,16 @@ object Form4: TForm4
     Height = 33
     Caption = 'SIMPAN'
     TabOrder = 9
+    OnClick = btn2Click
   end
   object btn3: TButton
     Left = 425
-    Top = 217
+    Top = 215
     Width = 81
     Height = 33
     Caption = 'EDIT'
     TabOrder = 10
+    OnClick = btn3Click
   end
   object btn4: TButton
     Left = 516
@@ -222,12 +226,14 @@ object Form4: TForm4
     Caption = 'BATAL'
     TabOrder = 12
   end
-  object edt7: TEdit
-    Left = 248
-    Top = 185
-    Width = 193
+  object cbb2: TComboBox
+    Left = 245
+    Top = 183
+    Width = 197
     Height = 21
+    ItemHeight = 13
     TabOrder = 13
+    OnChange = cbb2Change
   end
   object con1: TZConnection
     ControlsCodePage = cGET_ACP
@@ -249,7 +255,7 @@ object Form4: TForm4
     SQL.Strings = (
       'select*from ortu')
     Params = <>
-    Left = 10
+    Left = 9
     Top = 136
   end
   object ds1: TDataSource

@@ -1,6 +1,6 @@
 object Form3: TForm3
-  Left = 588
-  Top = 117
+  Left = 409
+  Top = 137
   Width = 924
   Height = 514
   Caption = 'Form3'
@@ -204,6 +204,7 @@ object Form3: TForm3
     Height = 33
     Caption = 'HAPUS'
     TabOrder = 11
+    OnClick = btn4Click
   end
   object btn5: TButton
     Left = 606
