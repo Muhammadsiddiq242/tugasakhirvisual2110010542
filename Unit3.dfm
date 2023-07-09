@@ -1,6 +1,6 @@
 object Form3: TForm3
-  Left = 409
-  Top = 137
+  Left = 446
+  Top = 221
   Width = 924
   Height = 514
   Caption = 'Form3'
@@ -213,6 +213,7 @@ object Form3: TForm3
     Height = 33
     Caption = 'BATAL'
     TabOrder = 12
+    OnClick = btn5Click
   end
   object con1: TZConnection
     ControlsCodePage = cGET_ACP

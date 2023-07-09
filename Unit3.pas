@@ -39,6 +39,7 @@ type
     procedure dbgrd1CellClick(Column: TColumn);
     procedure btn3Click(Sender: TObject);
     procedure btn4Click(Sender: TObject);
+    procedure btn5Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -196,6 +197,17 @@ begin
   begin
     ShowMessage('Penghapusan data dibatalkan!');
   end;
+end;
+
+procedure TForm3.btn5Click(Sender: TObject);
+begin
+edt1.Clear;
+edt2.Clear;
+edt3.Clear;
+edt4.Clear;
+edt5.Clear;
+edt6.Clear;
+cbb1.Clear;
 end;
 
 end.

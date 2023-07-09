@@ -217,14 +217,16 @@ object Form4: TForm4
     Height = 33
     Caption = 'HAPUS'
     TabOrder = 11
+    OnClick = btn4Click
   end
   object btn5: TButton
     Left = 606
-    Top = 215
+    Top = 214
     Width = 81
     Height = 33
     Caption = 'BATAL'
     TabOrder = 12
+    OnClick = btn5Click
   end
   object cbb2: TComboBox
     Left = 245

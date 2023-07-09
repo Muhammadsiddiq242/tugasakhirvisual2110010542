@@ -41,6 +41,8 @@ type
     procedure cbb2Change(Sender: TObject);
     procedure dbgrd1CellClick(Column: TColumn);
     procedure btn3Click(Sender: TObject);
+    procedure btn4Click(Sender: TObject);
+    procedure btn5Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -183,7 +185,7 @@ var
   Confirmation: Integer;
 begin
   Confirmation := MessageDlg('Apakah Anda yakin ingin mengedit data ini?', mtConfirmation, [mbYes, mbNo], 0);
-  
+
   if Confirmation = mrYes then
   begin
     // Mengedit data
@@ -198,7 +200,7 @@ begin
     zqry1.ParamByName('Value7').AsString := edt6.Text;
     zqry1.ParamByName('Value8').AsString := cbb2.Text;
     zqry1.ExecSQL;
-  
+
     ShowMessage('Data berhasil diedit!');
   end
   else
@@ -207,24 +209,74 @@ begin
   end;
 
   // Menampilkan data terbaru setelah pengeditan atau tidak melakukan edit
+  zqry1.Close; // Menutup dataset sebelum melakukan SELECT
   zqry1.SQL.Clear;
   zqry1.SQL.Add('SELECT * FROM ortu WHERE nik = :Value1');
   zqry1.ParamByName('Value1').AsString := edt1.Text;
   zqry1.Open;
-  
+
   // Menampilkan data terbaru di komponen input
-  if not zqry1.IsEmpty then
-  begin
-    edt2.Text := zqry1.FieldByName('nama').AsString;
-    edt3.Text := zqry1.FieldByName('pendidikan').AsString;
-    edt4.Text := zqry1.FieldByName('pekerjaan').AsString;
-    edt5.Text := zqry1.FieldByName('telpon').AsString;
-    cbb1.Text := zqry1.FieldByName('jenis_kelamin').AsString;
-    edt6.Text := zqry1.FieldByName('alamat').AsString;
-    cbb2.Text := zqry1.FieldByName('status').AsString;
-  end;
+  edt2.Text := zqry1.FieldByName('nama').AsString;
+  edt3.Text := zqry1.FieldByName('pendidikan').AsString;
+  edt4.Text := zqry1.FieldByName('pekerjaan').AsString;
+  edt5.Text := zqry1.FieldByName('telpon').AsString;
+  cbb1.Text := zqry1.FieldByName('jenis_kelamin').AsString;
+  edt6.Text := zqry1.FieldByName('alamat').AsString;
+  cbb2.Text := zqry1.FieldByName('status').AsString;
 end;
 
 
+
+procedure TForm4.btn4Click(Sender: TObject);
+var
+  Confirmation: Integer;
+begin
+  Confirmation := MessageDlg('Apakah Anda yakin ingin menghapus data ini?', mtConfirmation, [mbYes, mbNo], 0);
+
+  if Confirmation = mrYes then
+  begin
+    zqry1.SQL.Clear;
+    zqry1.SQL.Add('DELETE FROM ortu WHERE nik = :Value1');
+    zqry1.ParamByName('Value1').AsString := edt1.Text;
+    zqry1.ExecSQL;
+
+    ShowMessage('Data berhasil dihapus!');
+  end
+  else
+  begin
+    ShowMessage('Penghapusan data dibatalkan!');
+  end;
+
+  // Menutup dataset setelah penghapusan
+  zqry1.Close;
+
+  // Menampilkan data terbaru setelah penghapusan atau pembatalan penghapusan
+  zqry1.SQL.Clear;
+  zqry1.SQL.Add('SELECT * FROM ortu');
+  zqry1.Open;
+
+  // Membersihkan komponen input setelah penghapusan
+  edt1.Clear;
+  edt2.Clear;
+  edt3.Clear;
+  edt4.Clear;
+  edt5.Clear;
+  edt6.Clear;
+  cbb1.Clear;
+  cbb2.Clear;
+end;
+
+
+procedure TForm4.btn5Click(Sender: TObject);
+begin
+   edt1.Clear;
+edt2.Clear;
+edt3.Clear;
+edt4.Clear;
+edt5.Clear;
+edt6.Clear;
+cbb1.Clear;
+cbb2.Clear;
+end;
 
 end.
