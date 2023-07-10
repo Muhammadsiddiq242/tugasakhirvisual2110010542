@@ -1,8 +1,8 @@
 object Form6: TForm6
-  Left = 351
-  Top = 214
+  Left = 453
+  Top = 236
   Width = 924
-  Height = 480
+  Height = 476
   Caption = 'Form6'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -11,6 +11,7 @@ object Form6: TForm6
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object lbl1: TLabel
@@ -166,6 +167,7 @@ object Form6: TForm6
     Height = 33
     Caption = 'BARU'
     TabOrder = 6
+    OnClick = btn1Click
   end
   object btn2: TButton
     Left = 336
@@ -174,6 +176,7 @@ object Form6: TForm6
     Height = 33
     Caption = 'SIMPAN'
     TabOrder = 7
+    OnClick = btn2Click
   end
   object btn3: TButton
     Left = 425
@@ -182,6 +185,7 @@ object Form6: TForm6
     Height = 33
     Caption = 'EDIT'
     TabOrder = 8
+    OnClick = btn3Click
   end
   object btn4: TButton
     Left = 516
@@ -190,6 +194,7 @@ object Form6: TForm6
     Height = 33
     Caption = 'HAPUS'
     TabOrder = 9
+    OnClick = btn4Click
   end
   object btn5: TButton
     Left = 606
@@ -198,13 +203,7 @@ object Form6: TForm6
     Height = 33
     Caption = 'BATAL'
     TabOrder = 10
-  end
-  object edt7: TEdit
-    Left = 248
-    Top = 184
-    Width = 193
-    Height = 21
-    TabOrder = 11
+    OnClick = btn5Click
   end
   object dbgrd1: TDBGrid
     Left = 32
@@ -212,12 +211,13 @@ object Form6: TForm6
     Width = 857
     Height = 137
     DataSource = ds1
-    TabOrder = 12
+    TabOrder = 11
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
     TitleFont.Height = -11
     TitleFont.Name = 'Tahoma'
     TitleFont.Style = []
+    OnCellClick = dbgrd1CellClick
   end
   object dtp1: TDateTimePicker
     Left = 243
@@ -226,6 +226,13 @@ object Form6: TForm6
     Height = 25
     Date = 45095.524503194440000000
     Time = 45095.524503194440000000
+    TabOrder = 12
+  end
+  object edt7: TEdit
+    Left = 247
+    Top = 181
+    Width = 193
+    Height = 21
     TabOrder = 13
   end
   object con1: TZConnection
