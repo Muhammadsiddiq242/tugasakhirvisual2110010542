@@ -1,6 +1,6 @@
 object Form3: TForm3
-  Left = 446
-  Top = 221
+  Left = 358
+  Top = 366
   Width = 924
   Height = 514
   Caption = 'Form3'
@@ -245,7 +245,7 @@ object Form3: TForm3
       'select*from walikelas')
     Params = <>
     Left = 9
-    Top = 100
+    Top = 99
   end
   object ds1: TDataSource
     DataSet = zqry1

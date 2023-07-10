@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TfrxReport Version="4.0.11" DotMatrixReport="False" IniFile="\Software\Fast Reports" PreviewOptions.Buttons="4095" PreviewOptions.Zoom="1" PrintOptions.Printer="Default" PrintOptions.PrintOnSheet="0" ReportOptions.CreateDate="45117,9664393866" ReportOptions.Description.Text="" ReportOptions.LastChange="45117,9713804745" ScriptLanguage="PascalScript" ScriptText.Text="begin&#13;&#10;&#13;&#10;end." PropData="044C65667403CA0003546F7003220108446174617365747301010C2E00000020446174615365743D22667278646264747374312220446174615365744E616D653D2266727864626474737431220000095661726961626C65730100055374796C650100">
+  <TfrxDataPage Name="Data" Height="1000" Left="0" Top="0" Width="1000"/>
+  <TfrxReportPage Name="Page1" PaperWidth="190" PaperHeight="297" PaperSize="256" LeftMargin="0" RightMargin="0" TopMargin="0" BottomMargin="0" ColumnWidth="0" ColumnPositions.Text="" HGuides.Text="" VGuides.Text="">
+    <TfrxReportTitle Name="ReportTitle1" Font.Charset="1" Font.Color="0" Font.Height="-24" Font.Name="Arial" Font.Style="0" Height="30,23624" Left="0" ParentFont="False" Top="18,89765" Width="718,1107">
+      <TfrxMemoView Name="Memo1" Left="196,53556" Top="0" Width="332,59864" Height="30,23624" DisplayFormat.DecimalSeparator="," Font.Charset="1" Font.Color="0" Font.Height="-24" Font.Name="Arial" Font.Style="0" HAlign="haCenter" ParentFont="False" Text="CETAK DATA POIN"/>
+    </TfrxReportTitle>
+    <TfrxPageHeader Name="PageHeader1" Height="26,45671" Left="0" Top="71,81107" Width="718,1107">
+      <TfrxMemoView Name="Memo2" Left="11,33859" Top="0" Width="71,81107" Height="26,45671" DisplayFormat.DecimalSeparator="," Font.Charset="1" Font.Color="0" Font.Height="-21" Font.Name="Arial" Font.Style="0" Frame.Typ="15" HAlign="haCenter" ParentFont="False" Text="ID"/>
+      <TfrxMemoView Name="Memo3" Left="83,14966" Top="0" Width="170,07885" Height="26,45671" DisplayFormat.DecimalSeparator="," Font.Charset="1" Font.Color="0" Font.Height="-21" Font.Name="Arial" Font.Style="0" Frame.Typ="15" HAlign="haCenter" ParentFont="False" Text="POIN"/>
+      <TfrxMemoView Name="Memo4" Left="253,22851" Top="0" Width="211,65368" Height="26,45671" DisplayFormat.DecimalSeparator="," Font.Charset="1" Font.Color="0" Font.Height="-21" Font.Name="Arial" Font.Style="0" Frame.Typ="15" HAlign="haCenter" ParentFont="False" Text="BOBOT"/>
+      <TfrxMemoView Name="Memo5" Left="464,88219" Top="0" Width="234,33086" Height="26,45671" DisplayFormat.DecimalSeparator="," Font.Charset="1" Font.Color="0" Font.Height="-21" Font.Name="Arial" Font.Style="0" Frame.Typ="15" HAlign="haCenter" ParentFont="False" Text="JENIS"/>
+    </TfrxPageHeader>
+    <TfrxMasterData Name="MasterData1" Height="26,45671" Left="0" Top="158,74026" Width="718,1107" ColumnWidth="0" ColumnGap="0" DataSet="frxdbdtst1" DataSetName="frxdbdtst1" RowCount="0">
+      <TfrxMemoView Name="Memo7" Left="11,33859" Top="0" Width="71,81107" Height="26,45671" DataField="id" DataSet="frxdbdtst1" DataSetName="frxdbdtst1" Font.Charset="1" Font.Color="0" Font.Height="-19" Font.Name="Arial" Font.Style="0" Frame.Typ="15" HAlign="haCenter" ParentFont="False" Text="[frxdbdtst1.&#34;id&#34;]"/>
+      <TfrxMemoView Name="Memo8" Left="83,14966" Top="0" Width="170,07885" Height="26,45671" DataField="poin" DataSet="frxdbdtst1" DataSetName="frxdbdtst1" Font.Charset="1" Font.Color="0" Font.Height="-19" Font.Name="Arial" Font.Style="0" Frame.Typ="15" HAlign="haCenter" ParentFont="False" Text="[frxdbdtst1.&#34;poin&#34;]"/>
+      <TfrxMemoView Name="Memo6" Left="253,22851" Top="0" Width="211,65368" Height="26,45671" DataField="bobot" DataSet="frxdbdtst1" DataSetName="frxdbdtst1" Font.Charset="1" Font.Color="0" Font.Height="-19" Font.Name="Arial" Font.Style="0" Frame.Typ="15" HAlign="haCenter" ParentFont="False" Text="[frxdbdtst1.&#34;bobot&#34;]"/>
+      <TfrxMemoView Name="Memo9" Left="464,88219" Top="0" Width="234,33086" Height="26,45671" DataField="jenis" DataSet="frxdbdtst1" DataSetName="frxdbdtst1" Font.Charset="1" Font.Color="0" Font.Height="-19" Font.Name="Arial" Font.Style="0" Frame.Typ="15" HAlign="haCenter" ParentFont="False" Text="[frxdbdtst1.&#34;jenis&#34;]"/>
+    </TfrxMasterData>
+  </TfrxReportPage>
+</TfrxReport>

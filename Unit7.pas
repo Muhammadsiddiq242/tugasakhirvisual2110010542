@@ -24,6 +24,9 @@ type
     con1: TZConnection;
     zqry1: TZQuery;
     ds1: TDataSource;
+    procedure FormCreate(Sender: TObject);
+    procedure btn1Click(Sender: TObject);
+    procedure btn2Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -36,5 +39,47 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure TForm7.FormCreate(Sender: TObject);
+begin
+edt2.Clear;
+edt3.Clear;
+edt4.Clear;
+
+
+
+btn3.Enabled := False; //button ubah tidak aktif
+btn4.Enabled := False;
+btn5.Enabled := False;
+end;
+
+procedure TForm7.btn1Click(Sender: TObject);
+begin
+edt2.Clear;
+edt3.Clear;
+edt4.Clear;
+end;
+
+procedure TForm7.btn2Click(Sender: TObject);
+begin
+  zqry1.SQL.Clear;
+  zqry1.SQL.Add('INSERT INTO poin (poin, bobot, jenis) VALUES (:Value1, :Value2, :Value3)');
+  zqry1.ParamByName('Value1').AsString := edt2.Text;
+  zqry1.ParamByName('Value2').AsString := edt3.Text;
+  zqry1.ParamByName('Value3').AsString := edt4.Text;
+  zqry1.ExecSQL;
+
+  zqry1.Close;
+  zqry1.SQL.Clear;
+  zqry1.SQL.Add('SELECT * FROM poin');
+  zqry1.Open;
+
+  ShowMessage('Data berhasil disimpan!');
+
+  edt2.Clear;
+  edt3.Clear;
+  edt4.Clear;
+
+end;
 
 end.

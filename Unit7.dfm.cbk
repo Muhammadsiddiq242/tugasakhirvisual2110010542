@@ -1,7 +1,7 @@
 object Form7: TForm7
   Left = 308
   Top = 136
-  Width = 924
+  Width = 925
   Height = 480
   Caption = 'Form7'
   Color = clBtnFace
@@ -99,6 +99,7 @@ object Form7: TForm7
     Height = 33
     Caption = 'EDIT'
     TabOrder = 5
+    OnClick = btn3Click
   end
   object btn4: TButton
     Left = 516
@@ -128,6 +129,15 @@ object Form7: TForm7
     TitleFont.Height = -11
     TitleFont.Name = 'Tahoma'
     TitleFont.Style = []
+    OnCellClick = dbgrd1CellClick
+  end
+  object btn6: TButton
+    Left = 697
+    Top = 215
+    Width = 81
+    Height = 33
+    Caption = 'CETAK'
+    TabOrder = 9
   end
   object con1: TZConnection
     ControlsCodePage = cGET_ACP
