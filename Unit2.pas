@@ -6,7 +6,7 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, DB, ADODB, StdCtrls, ExtCtrls, ComCtrls, Menus, Grids, DBGrids,
   ZAbstractRODataset, ZAbstractDataset, ZDataset, ZAbstractConnection,
-  ZConnection ;
+  ZConnection, frxClass, frxDBSet ;
 
 type
   TForm2 = class(TForm)
@@ -36,6 +36,8 @@ type
     btn4: TButton;
     btn5: TButton;
     btn6: TButton;
+    frxdbdtst1: TfrxDBDataset;
+    frxrprt1: TfrxReport;
     procedure FormCreate(Sender: TObject);
     procedure cbb1Change(Sender: TObject);
     procedure btn1Click(Sender: TObject);
@@ -254,9 +256,7 @@ end;
 
 procedure TForm2.btn6Click(Sender: TObject);
 begin
-form2.zqry1.Active:=false;
-form2.zqry1.SQL.Add('SELECT*FROM siswa');
-form2.zqry1.Active:=true;
+frxrprt1.ShowReport();
 
 end;
 
