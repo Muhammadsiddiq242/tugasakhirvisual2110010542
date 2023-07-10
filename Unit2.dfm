@@ -1,6 +1,6 @@
 object Form2: TForm2
-  Left = 397
-  Top = 201
+  Left = 296
+  Top = 263
   Width = 924
   Height = 480
   Caption = 'Form2'
@@ -296,7 +296,7 @@ object Form2: TForm2
       ''
       'end.')
     Left = 262
-    Top = 318
+    Top = 317
     Datasets = <
       item
         DataSet = frxdbdtst1
